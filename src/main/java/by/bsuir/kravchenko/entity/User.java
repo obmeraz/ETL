@@ -1,10 +1,10 @@
 package by.bsuir.kravchenko.entity;
 
-import java.util.Objects;
+import java.util.Optional;
 
 public class User {
     private long id;
-    private int role;
+    private RoleType role;
     private String firstName;
     private String lastName;
     private String email;
@@ -35,11 +35,12 @@ public class User {
     }
 
     public int getRole() {
-        return role;
+        return role.ordinal();
     }
 
-    public void setRole(int role) {
-        this.role = role;
+    public void setRole(int roleId) {
+        Optional<RoleType> roleTypeOptional = RoleType.valueOf(roleId);
+        this.role = roleTypeOptional.orElse(RoleType.USER);
     }
 
     public long getId() {

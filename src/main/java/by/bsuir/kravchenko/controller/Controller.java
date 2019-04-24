@@ -4,6 +4,7 @@ import by.bsuir.kravchenko.command.Command;
 import by.bsuir.kravchenko.command.CommandConstant;
 import by.bsuir.kravchenko.command.CommandFactory;
 import by.bsuir.kravchenko.command.impl.EmptyCommand;
+import by.bsuir.kravchenko.exception.CommandException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,21 +15,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(name = "Controller")
+@WebServlet("/controller")
 public class Controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Command> commandOptional = CommandFactory.defineCommand(request.getParameter(CommandConstant.COMMAND));
         Command command = commandOptional.orElse(new EmptyCommand());
         Router router = new Router();
-        router = command.execute(request);
+        try {
+            router = command.execute(request);
+        } catch (CommandException e) {
+            e.printStackTrace();
+        }
         switch (router.getRoute()) {
             case FORWARD:
                 RequestDispatcher dispatcher = request.getRequestDispatcher(router.getPagePath());

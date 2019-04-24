@@ -31,6 +31,9 @@ public class UserDaoImpl implements UserDao<User> {
 
     private static final String SQL_INSERT_NEW_USER = "INSERT INTO users (FIRSTNAME,LASTNAME,EMAIL,PASSWORD,ROLE_ID) VALUES(?,?,?,?,?)";
 
+    private static final String SQL_SELECT_USER_BY_EMAIL_AND_PASSWORD = "SELECT id,firstname,lastname," +
+            "email,password,role_id FROM users WHERE email=? AND password=?";
+
 
     private UserDaoImpl() {
 
@@ -119,6 +122,25 @@ public class UserDaoImpl implements UserDao<User> {
             }
         } catch (SQLException e) {
             throw new DaoException("SQL exception, can't find user by id", e);
+        } finally {
+            ConnectionPool.getInstance().releaseConnection(connection);
+        }
+        return Optional.ofNullable(user);
+    }
+
+    @Override
+    public Optional<User> findUserByEmailAndPassword(String email, String password) throws DaoException {
+        Connection connection = ConnectionPool.getInstance().takeConnection();
+        User user = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_USER_BY_EMAIL_AND_PASSWORD)) {
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = buildEntity(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("SQL exception, can't user by email and password", e);
         } finally {
             ConnectionPool.getInstance().releaseConnection(connection);
         }
