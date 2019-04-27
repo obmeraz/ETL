@@ -34,7 +34,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getRole() {
+    public RoleType getRole() {
+        return role;
+    }
+
+    public int getRoleId() {
         return role.ordinal();
     }
 

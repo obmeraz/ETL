@@ -35,7 +35,7 @@
 <body class="text-center">
 <form action="${pageContext.request.contextPath}/controller" class="form-signin" method="POST">
     <input type="hidden" name="command" value="login"/>
-    <img class="mb-4 rounded-circle" src="${pageContext.request.contextPath}/img/Free_Sample_By_Wix%20-%20Copy.jpg"
+    <img class="mb-4 rounded-circle" src="${pageContext.request.contextPath}/img/Free_Sample_By_Wix.jpg"
          alt="" width="140" height="140">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail" class="sr-only">Email address</label>

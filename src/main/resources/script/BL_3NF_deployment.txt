@@ -1,0 +1,16 @@
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_REGIONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_COUNTRIES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_CITIES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_LOCATONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_STORES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_OCCUPATIONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_CUSTOMERS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_POSITIONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_EMPLOYEES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_PAYMENT_TYPES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_CATEGORIES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_SUBCATEGORIES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_PRODUCTS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\Tables\CE_SALES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\alter_session.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_3NF\sequences\seq.sql

@@ -1,0 +1,14 @@
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_CUSTOMERS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_EMPLOYEES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_LOCATIONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_PAYMENT_TYPES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_PRODUCTS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_STORES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\External_tables\EXTERNAL_FKT_TABLE.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_CUSTOMERS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_EMPLOYEES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_FKT_TABLE.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_LOCATIONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_PAYMENT_TYPES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_PRODUCTS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\SA_SRC\Tables\SRC_STORES.sql

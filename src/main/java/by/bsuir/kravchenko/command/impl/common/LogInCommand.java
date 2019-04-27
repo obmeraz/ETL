@@ -23,6 +23,7 @@ public class LogInCommand implements Command {
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
                 request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("role", user.getRole());
                 router.setPagePath("/jsp/main.jsp");
                 router.setRedirectRoute();
             }else{

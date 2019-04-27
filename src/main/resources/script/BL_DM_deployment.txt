@@ -1,0 +1,8 @@
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_CUSTOMERS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_DATES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_EMPLOYEES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_LOCATIONS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_PAYMENT_TYPES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_PRODUCTS.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\DIM_STORES.sql
+C:\Users\viku_\Desktop\Viktoryia_Krauchanka\dwso\BL_DM\Tables\FCT_SALES.sql
