@@ -37,22 +37,21 @@
 <c:if test="${not empty sessionScope.user}">
     <jsp:forward page="/jsp/main.jsp"/>
 </c:if>
-<form action="${pageContext.request.contextPath}/controller" class="form-signin" method="POST">
+<form name="sign" action="${pageContext.request.contextPath}/controller" class="form-signin" id="sign" method="POST" novalidate>
     <input type="hidden" name="command" value="login"/>
     <img class="mb-4 rounded-circle" src="${pageContext.request.contextPath}/img/Free_Sample_By_Wix.jpg"
          alt="" width="140" height="140">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <c:if test="${not empty message}">
+        <h2>${message}</h2>
+        <c:set var="message" value="" scope="session"/>
+    </c:if>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+    <input type="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,35}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,35}[a-zA-Z0-9])?)*$" maxlength="35" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
            autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <input type="password" id="inputPassword" minlength="6" maxlength="30" name="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
 </form>
 
@@ -67,5 +66,25 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByName("sign");
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 </body>
 </html>

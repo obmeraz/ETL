@@ -5,7 +5,8 @@ import java.util.Optional;
 
 public enum RoleType {
     USER,
-    ADMIN;
+    ADMIN,
+    GUEST;
 
     public static Optional<RoleType> valueOf(int roleId) {
         return Arrays.stream(values())

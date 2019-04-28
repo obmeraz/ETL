@@ -12,9 +12,9 @@
     <title>Result</title>
 </head>
 <body>
-<p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/jsp/main.jsp" role="button"> Назад </a></p>
+<c:import url="header.jsp"/>
 <c:forEach items="${logs}" var="item">
-    ${item}<br>
+    ${item}
 </c:forEach>
 </body>
 </html>

@@ -34,6 +34,8 @@ public class UserDaoImpl implements UserDao<User> {
     private static final String SQL_SELECT_USER_BY_EMAIL_AND_PASSWORD = "SELECT id,firstname,lastname," +
             "email,password,role_id FROM users WHERE email=? AND password=?";
 
+    private static final String SQL_CHECK_EMAIL = "SELECT email from users WHERE email=?";
+
 
     private UserDaoImpl() {
 
@@ -145,6 +147,24 @@ public class UserDaoImpl implements UserDao<User> {
             ConnectionPool.getInstance().releaseConnection(connection);
         }
         return Optional.ofNullable(user);
+    }
+
+    @Override
+    public boolean checkEmail(String email) throws DaoException {
+        boolean isExistsAlready = false;
+        Connection connection = ConnectionPool.getInstance().takeConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_CHECK_EMAIL)) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                isExistsAlready = true;
+            }
+        } catch (SQLException e) {
+            throw new DaoException("SQL exception, can't find email", e);
+        } finally {
+            ConnectionPool.getInstance().releaseConnection(connection);
+        }
+        return isExistsAlready;
     }
 
 

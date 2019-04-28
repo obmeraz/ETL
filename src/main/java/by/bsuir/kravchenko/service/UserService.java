@@ -5,6 +5,7 @@ import by.bsuir.kravchenko.entity.RoleType;
 import by.bsuir.kravchenko.entity.User;
 import by.bsuir.kravchenko.exception.DaoException;
 import by.bsuir.kravchenko.exception.ServiceException;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,8 @@ public class UserService {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setRole(RoleType.USER);
-        user.setPassword(password);
+        String passwordHash = DigestUtils.sha256Hex(password);
+        user.setPassword(passwordHash);
         return user;
     }
 
@@ -61,6 +63,15 @@ public class UserService {
         user.setRole(RoleType.ADMIN);
         try {
             userDao.update(user);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public boolean checkIsEmailAlreadyExists(String email) throws ServiceException {
+        UserDaoImpl userDao = UserDaoImpl.getInstance();
+        try {
+            return userDao.checkEmail(email);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

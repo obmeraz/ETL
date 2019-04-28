@@ -22,26 +22,47 @@
 </div>
 
 <div class="adduser">
+    <c:if test="${not empty errorLogs}">
+        <div class="alert alert-danger alert-dismissible text-left" role="alert">
+            <h4 class="alert-heading">Attention!</h4>
+            <hr/>
+            <ul>
+                <c:forEach items="${errorLogs}" var="message">
+                    <li>${message}</li>
+                </c:forEach>
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <c:set var="errorLogs" value="" scope="session"/>
+    </c:if>
     <h4>Register new user:</h4>
-    <form class="form-inline" action="${pageContext.request.contextPath}/controller" method="post">
+    <form name="add_user" class="form-inline" action="${pageContext.request.contextPath}/controller" id="add_user" method="post" novalidate>
         <input type="hidden" name="command" value="add_user">
         <div class="form-group mb-2">
             <label for="StaticFirstname" class="sr-only">Firstname</label>
-            <input type="text" name="firstname" class="form-control" id="StaticFirstname" placeholder="Firstname">
+            <input type="text" pattern="^[A-ZЁА-Я]([a-z]{1,20}|[а-яё]{1,20})$" maxlength="20" name="firstname"
+                   class="form-control" id="StaticFirstname"  placeholder="Firstname" required>
         </div>
         <div class="form-group mx-sm-3 mb-2">
             <label for="staticEmail2" class="sr-only">Lastname</label>
             <label for="StaticLastname"></label>
-            <input name="lastname" type="text" class="form-control" id="StaticLastname"
-                   placeholder="Lastname">
+            <input name="lastname" pattern="^[A-ZЁА-Я]([a-z]{1,20}|[а-яё]{1,20})$" maxlength="20" type="text"
+                   class="form-control" id="StaticLastname"
+                   placeholder="Lastname" required>
         </div>
         <div class="form-group mb-2">
             <label for="staticEmail2" class="sr-only">Email</label>
-            <input name="email" type="text" class="form-control" id="staticEmail2" placeholder="email@example.com">
+            <input name="email"
+                   pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,35}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,35}[a-zA-Z0-9])?)*$"
+                   maxlength="35" type="text" class="form-control" id="staticEmail2" placeholder="email@example.com"
+                   required>
         </div>
         <div class="form-group mx-sm-3 mb-2">
             <label for="inputPassword2" class="sr-only">Password</label>
-            <input type="password" name="password" class="form-control" id="inputPassword2" placeholder="Password">
+            <input type="password"  minlength="6" maxlength="30" name="password" class="form-control"
+                   id="inputPassword2" placeholder="Password" required>
         </div>
         <button type="submit" class="btn btn-outline-success mb-2">Submit</button>
     </form>
@@ -80,8 +101,8 @@
                         </c:if>
                     </td>
                     <td>
-                            <a href="${pageContext.request.contextPath}/controller?command=delete_user&id=${user.id}"
-                               class="btn btn-outline-danger">Delete</a>
+                        <a href="${pageContext.request.contextPath}/controller?command=delete_user&id=${user.id}"
+                           class="btn btn-outline-danger">Delete</a>
                     </td>
                 </c:if>
             </tr>

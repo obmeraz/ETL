@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Viktoria
@@ -11,7 +12,10 @@
     <title>Error page</title>
 </head>
 <body>
-<a class="btn btn-warn" href="${pageContext.request.contextPath}/jsp/login.jsp">Back</a>
-Ooooops,${message}
+<c:import url="header.jsp"/>
+<c:if test="${not empty message}">
+    <h2 style="margin-top: 100px">${message}</h2>
+    <c:set var="message" value="" scope="session"/>
+</c:if>
 </body>
 </html>

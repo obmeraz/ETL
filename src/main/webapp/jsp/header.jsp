@@ -34,10 +34,12 @@
                     <a href="${pageContext.request.contextPath}/controller?command=display_userlist"
                        class="btn btn-outline-warning mr-3">Admin Panel</a>
                 </c:if>
-                    <button type="button" class="btn btn-outline-info mr-3"
-                            disabled>${sessionScope.user.firstName}</button>
-                <a class="btn btn-outline-success my-2 my-sm-0"
-                   href="${pageContext.request.contextPath}/controller?command=log_out">Sign Out</a>
+                <button type="button" class="btn btn-outline-info mr-3"
+                        disabled>${sessionScope.user.firstName}</button>
+                <c:if test="${(sessionScope.role eq 'ADMIN') or (sessionScope.role eq 'USER')}">
+                    <a class="btn btn-outline-success my-2 my-sm-0"
+                       href="${pageContext.request.contextPath}/controller?command=log_out">Sign Out</a>
+                </c:if>
             </form>
         </div>
     </nav>

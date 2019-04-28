@@ -16,7 +16,6 @@ public class DeleteUserCommand implements Command {
     @Override
     public Router execute(HttpServletRequest request) throws CommandException {
         Router router = new Router();
-       // String path=String.valueOf(request.getSession().getAttribute(CommandConstant.CURRENT_PAGE));
         String id = request.getParameter("id");
         if (id == null || id.isEmpty()) {
             request.getSession().setAttribute(CommandConstant.MESSAGE, "Doesn't exist");

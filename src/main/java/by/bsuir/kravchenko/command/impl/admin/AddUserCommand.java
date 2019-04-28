@@ -28,18 +28,23 @@ public class AddUserCommand implements Command {
         String email = request.getParameter(PARAM_EMAIL);
         String password = request.getParameter(PARAM_PASSWORD);
         List<String> errorLogs = new ArrayList<>();
-        if (UserValidator.addUserValidation(firstName, lastName, email, password)) {
-            User user = userService.buildUser(firstName, lastName, email, password);
-            try {
-                userService.addUser(user);
-                router.setPagePath(PagePath.ADMIN_COMMAND);
+        try {
+            if (UserValidator.addUserValidation(firstName, lastName, email, password, errorLogs)) {
+                User user = userService.buildUser(firstName, lastName, email, password);
+                try {
+                    userService.addUser(user);
+                    router.setPagePath(PagePath.ADMIN_COMMAND);
+                    router.setRedirectRoute();
+                } catch (ServiceException e) {
+                    throw new CommandException(e);
+                }
+            } else {
+                request.getSession().setAttribute("errorLogs", errorLogs);
                 router.setRedirectRoute();
-            } catch (ServiceException e) {
-                throw new CommandException(e);
+                router.setPagePath(PagePath.ADMIN_COMMAND);
             }
-        } else {
-            request.setAttribute("errorLogs", errorLogs);
-            router.setPagePath(PagePath.ADMIN);
+        } catch (ServiceException e) {
+            throw new CommandException(e);
         }
         return router;
     }
