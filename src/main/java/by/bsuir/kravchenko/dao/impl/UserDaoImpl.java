@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao<User> {
     private static final String ROLE = "role_id";
 
 
-    private static final String SQL_SELECT_ALL_USERS = "SELECT id, firstname, lastname, email, password, role_id FROM users";
+    private static final String SQL_SELECT_ALL_USERS = "SELECT id, firstname, lastname, email, password, role_id FROM users ORDER BY ID";
 
     private static final String SQL_FIND_USER_BY_ID = "SELECT id, firstname, lastname, email, password, role_id FROM users WHERE id=?";
 

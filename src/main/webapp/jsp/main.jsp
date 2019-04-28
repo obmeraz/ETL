@@ -8,11 +8,6 @@
 
     <title>Начать ETL</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -82,40 +77,7 @@
     </div>
 </noscript> <!-- /Yandex.Metrika counter -->
 
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <img class="navbar-brand rounded-circle"
-             src="../img/Free_Sample_By_Wix.jpg" width="60" height="65">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-
-            <form class="form-inline mt-2 mt-md-0">
-                <c:if test="${sessionScope.role eq 'ADMIN'}">
-                    <a class="btn btn-outline-danger my-2 my-sm-0 mr-3"
-                       href="${pageContext.request.contextPath}">Admin panel</a>
-                </c:if>
-                <a class="btn btn-outline-success my-2 my-sm-0 mr-3"
-                   href="${pageContext.request.contextPath}">${sessionScope.user.firstName}</a>
-                <a class="btn btn-outline-success my-2 my-sm-0"
-                   href="${pageContext.request.contextPath}/controller?command=log_out">Log out</a>
-            </form>
-        </div>
-    </nav>
-</header>
+<c:import url="/jsp/header.jsp"/>
 
 <main role="main">
 
@@ -137,9 +99,11 @@
                     и пакеты для каждого из слоев(про значение которых вы можете прочитать ниже). Этот процесс
                     называется англоязычным термином "Initial Load" означает что все ETL система будеи создана с
                     нуля.</p>
-                <p><a class="btn btn-secondary" type="button" id="btnFetch" href="${pageContext.request.contextPath}/controller?command=init_load_db">
-                    Начать разворачивание базы » </a></p>
-                <p><a class="btn btn-secondary" id="btnFetch2" href="${pageContext.request.contextPath}/controller?command=increment_load_db" role="button"> Начать первичную загрузку » </a></p>
+                <c:if test="${sessionScope.role eq 'ADMIN'}">
+                    <p><a class="btn btn-success" role="button" id="btnFetch"
+                          href="${pageContext.request.contextPath}/controller?command=init_load_db">
+                        Начать разворачивание базы » </a></p>
+                </c:if>
             </div><!-- /.col-lg-6 -->
             <div class="col-lg-6">
                 <img class="bd-placeholder-img rounded-circle"
@@ -149,7 +113,9 @@
                 <p>При выборе этого варианта предполагается что все необходимые таблицы, последовательности, процедуры и
                     пакеты(со всеми необходимыми им правами) уже созданы. Процесс при этом называется "Incremental Load"
                     и запускается не при первой загрузке, а при последующей ежедневной загрузке новых данных.</p>
-                <p><a class="btn btn-secondary" id="btnFetch3" href="${pageContext.request.contextPath}/controller?command=increment_load_db" role="button"> Начать инкрементальную загрузку » </a></p>
+                <p><a class="btn btn-success" id="btnFetch3"
+                      href="${pageContext.request.contextPath}/controller?command=increment_load_db" role="button">
+                    Начать инкрементальную загрузку » </a></p>
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
 
@@ -263,21 +229,9 @@
     </footer>
 </main>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
 <script>
-    $(document).ready(function() {
-        $("#btnFetch").click(function() {
+    $(document).ready(function () {
+        $("#btnFetch").click(function () {
             // disable button
             $(this).prop("disabled", true);
             // add spinner to button
@@ -287,8 +241,8 @@
         });
     });
 
-    $(document).ready(function() {
-        $("#btnFetch2").click(function() {
+    $(document).ready(function () {
+        $("#btnFetch2").click(function () {
             // disable button
             $(this).prop("disabled", true);
             // add spinner to button
@@ -298,8 +252,8 @@
         });
     });
 
-    $(document).ready(function() {
-        $("#btnFetch3").click(function() {
+    $(document).ready(function () {
+        $("#btnFetch3").click(function () {
             // disable button
             $(this).prop("disabled", true);
             // add spinner to button

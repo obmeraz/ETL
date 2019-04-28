@@ -1,5 +1,6 @@
 package by.bsuir.kravchenko.entity;
 
+import javax.management.relation.Role;
 import java.util.Optional;
 
 public class User {
@@ -45,6 +46,10 @@ public class User {
     public void setRole(int roleId) {
         Optional<RoleType> roleTypeOptional = RoleType.valueOf(roleId);
         this.role = roleTypeOptional.orElse(RoleType.USER);
+    }
+
+    public void setRole(RoleType role) {
+        this.role = role;
     }
 
     public long getId() {

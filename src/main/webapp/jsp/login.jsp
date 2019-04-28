@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -33,13 +34,17 @@
 </head>
 
 <body class="text-center">
+<c:if test="${not empty sessionScope.user}">
+    <jsp:forward page="/jsp/main.jsp"/>
+</c:if>
 <form action="${pageContext.request.contextPath}/controller" class="form-signin" method="POST">
     <input type="hidden" name="command" value="login"/>
     <img class="mb-4 rounded-circle" src="${pageContext.request.contextPath}/img/Free_Sample_By_Wix.jpg"
          alt="" width="140" height="140">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+           autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">

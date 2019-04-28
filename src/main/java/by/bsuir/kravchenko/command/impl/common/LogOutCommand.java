@@ -11,7 +11,7 @@ public class LogOutCommand implements Command {
     public Router execute(HttpServletRequest request) throws CommandException {
         Router router = new Router();
         request.getSession().invalidate();
-        router.setPagePath("/jsp/main.jsp");
+        router.setPagePath("/jsp/login.jsp");
         router.setRedirectRoute();
         return router;
     }
